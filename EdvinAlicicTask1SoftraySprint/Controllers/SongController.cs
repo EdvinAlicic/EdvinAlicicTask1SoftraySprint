@@ -28,7 +28,16 @@ namespace EdvinAlicicTask1SoftraySprint.Controllers
         [HttpGet("{songId}", Name = "GetSong")]
         public async Task<ActionResult<SongDto>> GetSongForCategory(int categoryId, int songId)
         {
+            if(!await _songInfoRepository.CategoryExitsAsync(categoryId))
+            {
+                return NotFound();
+            }
             var song = await _songInfoRepository.GetSongForCategory(categoryId, songId);
+
+            if(song == null)
+            {
+                return NotFound();
+            }
 
             return Ok(_mapper.Map<SongDto>(song));
         }
