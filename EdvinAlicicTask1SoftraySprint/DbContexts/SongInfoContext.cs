@@ -7,6 +7,7 @@ namespace EdvinAlicicTask1SoftraySprint.DbContexts
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Song> Songs { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public SongInfoContext(DbContextOptions<SongInfoContext> options) : base(options)
         {

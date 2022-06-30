@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<SongInfoContext>(dbContextOptions => dbContextOptions.UseSqlite("Data Source=CategoryInfo.db"));
+builder.Services.AddDbContext<SongInfoContext>(dbContextOptions => dbContextOptions.UseSqlServer(builder.Configuration.GetConnectionString("SongDbConnectionString")));
 
 builder.Services.AddScoped<ISongInfoRepository, SongInfoRepository>();
 

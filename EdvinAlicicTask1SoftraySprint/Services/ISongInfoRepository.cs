@@ -9,5 +9,8 @@ namespace EdvinAlicicTask1SoftraySprint.Services
         Task<bool> CategoryExitsAsync(int categoryId);
         Task<IEnumerable<Song>> GetSongsForCategory(int categoryId);
         Task<Song?> GetSongForCategory(int categoryId, int songId);
+        Task AddSongForCategoryAsync(int categoryId, Song song);
+        void DeleteSongForCategoryAsync(Song song);
+        Task<bool> SaveChangesAsync();
     }
 }

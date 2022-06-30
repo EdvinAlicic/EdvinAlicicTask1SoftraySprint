@@ -7,6 +7,9 @@ namespace EdvinAlicicTask1SoftraySprint.Profiles
         public SongProfile()
         {
             CreateMap<Entities.Song, Models.SongDto>();
+            CreateMap<Models.SongForCreationDto, Entities.Song>();
+            CreateMap<Models.SongForUpdateDto, Entities.Song>();
+            CreateMap<Entities.Song, Models.SongForUpdateDto>();
         }
     }
 }

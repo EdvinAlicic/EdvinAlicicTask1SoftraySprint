@@ -4,7 +4,7 @@
 
 namespace EdvinAlicicTask1SoftraySprint.Migrations
 {
-    public partial class prva : Migration
+    public partial class kreiranje : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,9 @@ namespace EdvinAlicicTask1SoftraySprint.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,14 +25,14 @@ namespace EdvinAlicicTask1SoftraySprint.Migrations
                 name: "Songs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    songName = table.Column<string>(type: "TEXT", nullable: false),
-                    authorName = table.Column<string>(type: "TEXT", nullable: false),
-                    songUrl = table.Column<string>(type: "TEXT", nullable: false),
-                    rating = table.Column<int>(type: "INTEGER", nullable: false),
-                    isFavorite = table.Column<bool>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    songName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    authorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    songUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    rating = table.Column<int>(type: "int", nullable: false),
+                    isFavorite = table.Column<bool>(type: "bit", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +41,8 @@ namespace EdvinAlicicTask1SoftraySprint.Migrations
                         name: "FK_Songs_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
